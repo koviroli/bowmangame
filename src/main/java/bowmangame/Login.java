@@ -1,3 +1,5 @@
+package bowmangame;
+
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -10,8 +12,7 @@ public class Login {
 	public Login() {	
 		try {
 			Stage stage = new Stage();
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
+			Parent root  = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Login.fxml"));
 	    	Scene scene = new Scene(root);
 	    	stage.setScene(scene);
 	    	stage.show();

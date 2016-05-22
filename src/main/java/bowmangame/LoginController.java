@@ -1,5 +1,9 @@
+package bowmangame;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,37 +34,42 @@ public class LoginController implements Initializable{
 	@FXML
 	private Text checkText;
 	
+	public static Logger logger = LoggerFactory.getLogger(DBHandler.class);
+	
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 	
 	public void wrongData(){
 		checkText.setFill(Color.RED);
-		checkText.setText("wrong username/password.");
+		logger.error("wrong username/password.");
 	}
 	
 	public void loginSucces(){
 		checkText.setFill(Color.GREEN);
-		checkText.setText("Succesfully logged in!");
+		logger.info("Succesfully logged in!");
 	}
 	
 	public void login(){
-		System.out.println("Logged in as:");
+		logger.info("Logged in as:");
+		logger.info(userName.getText());
 		
 		DBHandler dbhandler = new DBHandler();
-		if (dbhandler.DBLogin(userName.getText(), userPassword.getText())){
+		
+		User user = dbhandler.DBLogin(userName.getText(), userPassword.getText());
+		
+		if (user != null){
 			loginSucces();
 			@SuppressWarnings("unused")
-			Game game = new Game();
+			Game game = new Game(user);
 		}
 		else{
 			wrongData();
-			System.err.println("user/pw ERR");
 		}		
 	}
 	
 	public void register(){
-		System.out.println("Register");
+		logger.info("Register");
 		@SuppressWarnings("unused")
 		Register register = new Register();
 	}

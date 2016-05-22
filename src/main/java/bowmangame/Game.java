@@ -1,3 +1,4 @@
+package bowmangame;
 import action.ShotAction;
 import controller.ArcherController;
 import controller.ArrowController;
@@ -12,6 +13,11 @@ import javafx.stage.Stage;
 import model.BowManGameObject;
 import view.GameUI;
 
+/**
+ * Ebben az osztályban valósítódik meg a játék.
+ * @author koviroli
+ *
+ */
 public class Game extends BowManGameObject{
 	
 	private static Group root = new Group();
@@ -26,7 +32,12 @@ public class Game extends BowManGameObject{
 	private GameUI gameUI = new GameUI();
 	private ShotAction shot = new ShotAction(arrowController.getModel(), targetController.getModel());
 	
-	public Game(){
+	private User user;
+	
+	public Game(User user){
+		this.user = user;
+		gameUI.setPoints(user.getPoints());
+		gameUI.setPlayerNameText(user.getUsername());
 		stage.setScene(scene);
 		addToRoot();
 		eventHandler();
@@ -35,7 +46,9 @@ public class Game extends BowManGameObject{
 	}
 	
 	
-	//handle keyboard-, mouse user input
+	/**
+	 * Az egér kezelésért felelős függvény
+	 */
 	private void eventHandler(){
 		scene.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e) {            
@@ -64,9 +77,11 @@ public class Game extends BowManGameObject{
 
                     if( shot.action() ){
                     	gameUI.incPoints();
+                    	user.addPoint();
                     }
                     else{
                     	gameUI.decrPoints();
+                    	user.losePoint();
                     }
                 }  
             }
@@ -91,6 +106,7 @@ public class Game extends BowManGameObject{
 		root.getChildren().add(gameUI.getPowerText());
 		root.getChildren().add(gameUI.getAimLine());
 		root.getChildren().add(gameUI.getPointsText());
+		root.getChildren().add(gameUI.getPlayerNameText());
 		root.getChildren().add(shot.getImw());
 		root.getChildren().add(shot.getPath());
 	}

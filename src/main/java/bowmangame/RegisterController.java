@@ -1,5 +1,9 @@
+package bowmangame;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +33,8 @@ public class RegisterController implements Initializable{
 	
 	@FXML
 	private Text regCheck;
+	
+	public static Logger logger = LoggerFactory.getLogger(DBHandler.class);
 
 	public void initialize(URL location, ResourceBundle resources) {
 	}

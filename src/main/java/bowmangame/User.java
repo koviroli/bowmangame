@@ -1,3 +1,4 @@
+package bowmangame;
 import java.time.LocalDate;
 
 public class User {
@@ -75,6 +76,14 @@ public class User {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	public void addPoint(){
+		this.points++;
+	}
+	
+	public void losePoint(){
+		this.points--;
 	}
 
 	public String getRegistrationDate() {

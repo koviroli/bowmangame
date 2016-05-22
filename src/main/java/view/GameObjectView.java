@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 package view;
 
 import javafx.scene.canvas.Canvas;

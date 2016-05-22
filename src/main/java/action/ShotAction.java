@@ -11,42 +11,68 @@ import model.BowManGameObject;
 import model.GameObjectModel;
 import model.TargetModel;
 
+/**
+ * ShotAction felelős az íj nyílból való kilövéséhez.
+ * @author koviroli
+ *
+ */
 public class ShotAction extends BowManGameObject{
 	
-	//path will be the path of the object that have been shot
+	/**
+	 * Az út amit bejár a nyíl a lövés következtében.
+	 */
 	private Path path = new Path();
+	
+	
 	private PathTransition pTransition = new PathTransition();
 	
-	//the imageview, representing the image.
-	//later will get an image
+	/**
+	 * imw a kapott képet reprezentálja. Ez fog mozogni a kép helyett.
+	 */
 	private ImageView imw = new ImageView();
 	
+	/**
+	 * Ezt a képet adjuk át az imw -nek.
+	 */
 	private Image image;
 	
-	//angle of the shot
+	/**
+	 * A lövés szöge.
+	 */
 	private double angle;
 	
-	//power of the shot
+	/**
+	 * A lövés ereje.
+	 */
 	private double power;
 	
-	//the starting position of the shot
+	/**
+	 * A lövés kezdő koordinátái. sx az x, sy az y koordinátája a lövésnek.
+	 */
 	private double sx, sy;
 	
-	//the target's position
+	/**
+	 * A céltábla kezdő és vég koordinátái.
+	 */
 	private double tx1, ty1, tx2, ty2;
 	
-	//sign hit or not
+	/**
+	 * A hit azt jelzi eltaláltuk-e a céltáblát vagy sem.
+	 */
 	private boolean hit = false;
 	
-	//default constructor
+
 	public ShotAction() {
 	
 	}
 	
-	//shot action need a model to be shot, and a target to be hit
+	/**
+	 * A ShotAction konstruktora kapja a model-t amit kilövünk és a target-et amit el kell találjunk.
+	 * @param model az az objektum amivel lövünl.
+	 * @param target az az objektum amit el kell találni.
+	 */
 	public ShotAction(GameObjectModel model, TargetModel target){
 		image = model.getImage();
-		//imw.setImage(model.getImage());
 		sx = model.getPosX();
 		sy = model.getPosY();
 		angle = model.getRotation();
@@ -57,23 +83,37 @@ public class ShotAction extends BowManGameObject{
 		this.tx2 = target.getX2();
 		this.ty2 = target.getY2();
 	}
-
+	
+	/**
+	 * @return visszaadja azt az utat, amit a nyíl bejár a lövés során.
+	 */
 	public Path getPath() {
 		return path;
 	}
-
+	
+	/**
+	 * @param path átadjuk a path osztályváltozónknak a path -ot, ami szintén egy utat kell tartalmazzon.
+	 */
 	public void setPath(Path path) {
 		this.path = path;
 	}
-
+	
+	/**
+	 * Visszaadja a pathTransition-t, az az, az animációt amivel a path-t bejárjuk.
+	 * @return
+	 */
 	public PathTransition getpTransition() {
 		return pTransition;
 	}
-
+	
+	/**
+	 * Beállítjuk miként járja be az utat a modellünk.
+	 * @param pTransition az út bejárása során lejátszandó animáció
+	 */
 	public void setpTransition(PathTransition pTransition) {
 		this.pTransition = pTransition;
 	}
-
+	
 	public ImageView getImw() {
 		return imw;
 	}
@@ -161,7 +201,11 @@ public class ShotAction extends BowManGameObject{
 		this.ty2 = ty2;
 	}
 	
-    //the arc of the shot
+    /**
+     * A lövés ívét szolgátató függvény
+     * @param x egy double változó amit a shotArc függvénybe helyettesítve megkapjuk a hozzátartozó y értéket.
+     * @return	a függvény x-hez tartozó y értéke.
+     */
     public double shotArc(double x){
     	double y = (Math.tan(Math.toRadians(angle)) * x) 
     			- (G / (2.0f * Math.pow(power, 2) * Math.pow(Math.cos(Math.toRadians(angle)), 2))) * Math.pow(x, 2);
@@ -169,21 +213,19 @@ public class ShotAction extends BowManGameObject{
     	return y;
     }
     
-    //the maximum value of the shot
-    //(v0^2)*sin(2*alfa)/g
+    /**
+     * A matematikai definíciója ennek a függvénynek:(v0^2) * sin(2*alfa)/g
+     * @return Adott erejű és szögű lövés esetén a maximum x értéket adja vissza. 
+     */
     public double xmax(){
     	double max = (Math.pow(power, 2) * Math.sin(2 * Math.toRadians(angle))) / G;
     	return max;
     }
-    
-    //the time of the shot
-    // 2 * v0 * sin(alfa) / g
-    public double to(){
-    	double t;
-    	t = ((2.0f * power * Math.sin(Math.toRadians(angle)))/G) / 10.0f;
-    	return t;
-    }
-	
+   
+	/**
+	 * Inicializáljuk a képet, az ut és az animációt.
+	 * @return
+	 */
 	public boolean Initalize(){
 		imw.setImage(image);
 	    path.setOpacity(0.0);
@@ -207,7 +249,10 @@ public class ShotAction extends BowManGameObject{
     	return false;
     }
 	
-    //plays the animation
+    /**
+     * Maga a lövést reprezentáló függvény.
+     * @return igazat ad vissza, ha talált, egyébként hamisat.
+     */
     public boolean action(){	  
     	hit = Initalize();
 	    pTransition.play();

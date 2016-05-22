@@ -1,3 +1,5 @@
+package bowmangame;
+
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -7,17 +9,17 @@ import javafx.stage.Stage;
 
 public class Register {
 	
+	
 	public Register(){
 		try {
 			Stage stage = new Stage();
 			Parent root;
-			root = FXMLLoader.load(getClass().getResource("fxml/Register.fxml"));
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Register.fxml"));
 	    	Scene scene = new Scene(root);
 	    	stage.setScene(scene);
 	    	stage.show();
 	    	
 		} catch (IOException e) {
-			System.err.println("something went wrong while loading the Register.fxml");
 			e.printStackTrace();
 		}
 	}

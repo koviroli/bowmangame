@@ -12,6 +12,10 @@ public class GameUI {
 	
 	private static final double POINTS_TEXT_Y = 30.0f;
 	
+	private static final double PLAYER_NAME_TEXT_X = 150.0f;
+	
+	private static final double PLAYER_NAME_TEXT_Y = 30.0f; 
+	
 	//aimLine graphically representing the angle and power of the shot
 	private Line aimLine;
 	
@@ -27,15 +31,20 @@ public class GameUI {
 	//the angle of the shot
 	private double angle;
 	
-	private double points;
+	private int points;
 	
 	private Text pointsText;
+	
+	private Text playerNameText;
 	
 	public GameUI(){
 		aimLine = new Line();
 		powerText = new Text();
 		angleText = new Text();
 		pointsText = new Text();
+		playerNameText = new Text();
+		playerNameText.setX(PLAYER_NAME_TEXT_X);
+		playerNameText.setY(PLAYER_NAME_TEXT_Y);
 		setPointsText();
 
 		this.aimLine.setStrokeWidth(0.2);
@@ -69,7 +78,7 @@ public class GameUI {
 		return points;
 	}
 
-	public void setPoints(double points) {
+	public void setPoints(int points) {
 		this.points = points;
 	}
 	
@@ -113,6 +122,14 @@ public class GameUI {
 		pointsText.setText(String.format("points: %.0f", getPoints()));
 		pointsText.setX(POINTS_TEXT_X);
 		pointsText.setY(POINTS_TEXT_Y);
+	}
+
+	public Text getPlayerNameText() {
+		return playerNameText;
+	}
+
+	public void setPlayerNameText(String playerName) {
+		this.playerNameText.setText("player: " + playerName);
 	}
 
 	public Line getAimLine() {
