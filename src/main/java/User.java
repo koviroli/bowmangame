@@ -5,14 +5,16 @@ public class User {
 	private static int idCounter;
 	private int userId;
 	private String username;
-	private String userpassword;
+	private String password;
 	private String emailaddress;
 	private String registrationDate;
+	private int points;
+	private int level;
 
 	public User(String username, String userpassword, String emailaddress) {
 		super();
 		this.username = username;
-		this.userpassword = userpassword;
+		this.password = userpassword;
 		this.emailaddress = emailaddress;
 		idCounter++;
 		userId = (idCounter);
@@ -36,11 +38,11 @@ public class User {
 	}
 
 	public String getUserpassword() {
-		return userpassword;
+		return password;
 	}
 
 	public void setUserpassword(String userpassword) {
-		this.userpassword = userpassword;
+		this.password = userpassword;
 	}
 
 	public String getEmailaddress() {
@@ -49,6 +51,30 @@ public class User {
 
 	public void setEmailaddress(String emailaddress) {
 		this.emailaddress = emailaddress;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 	public String getRegistrationDate() {
@@ -61,7 +87,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", userpassword=" + userpassword
+		return "User [userId=" + userId + ", username=" + username + ", userpassword=" + password
 				+ ", emailaddress=" + emailaddress + ", registrationDate=" + registrationDate + "]";
 	}
 }

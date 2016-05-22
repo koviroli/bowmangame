@@ -31,12 +31,42 @@ public class RegisterController implements Initializable{
 	private Text regCheck;
 
 	public void initialize(URL location, ResourceBundle resources) {
-		
 	}
 	
-	public void register(){
+	public void existingUser(){
+		regCheck.setFill(Color.RED);
+		regCheck.setText("username already exist!");
+	}
+	
+	public void emptyField(){
+		regCheck.setFill(Color.RED);
+		regCheck.setText("any field is empty");
+	}
+	
+	public void succesfulRegistry(){
 		regCheck.setFill(Color.GREEN);
 		regCheck.setText("registration Succesfull!");
+	}
+	
+	public void userAlreadyExists(){
+		regCheck.setFill(Color.RED);
+		regCheck.setText("user already exists!");
+	}
+	
+	public void register(){	
+		DBHandler dbhandler = new DBHandler();
+		User user = new User(userName.getText(), userPassword.getText(), userEmail.getText());
+		
+		if(userName.getText().isEmpty() || userPassword.getText().isEmpty() || userEmail.getText().isEmpty()){
+			emptyField();
+		}
+		else if(dbhandler.checkUser(user)){
+			userAlreadyExists();
+		}
+		else{
+			succesfulRegistry();						
+			dbhandler.newRegistry(user);
+		}
 	}
 
 }
