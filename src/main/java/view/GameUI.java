@@ -118,7 +118,7 @@ public class GameUI {
 		return pointsText;
 	}
 
-	private void setPointsText() {
+	public void setPointsText() {
 		pointsText.setText(String.format("points: %.0f", getPoints()));
 		pointsText.setX(POINTS_TEXT_X);
 		pointsText.setY(POINTS_TEXT_Y);

@@ -239,7 +239,17 @@ public class DBHandler {
 	                }
 	            }
 	        }
-		}catch (SAXException | IOException  e) {
+	    	
+	    	TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        Transformer transformer = transformerFactory.newTransformer();
+	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        DOMSource source = new DOMSource(doc);        
+	        
+	        //StreamResult result = new StreamResult(new File("users.xml"));
+	        StreamResult result = new StreamResult(usersxml.toFile());
+	        transformer.transform(source, result);
+	    	
+		}catch (SAXException | IOException | TransformerException  e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  	

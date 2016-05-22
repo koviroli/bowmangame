@@ -32,11 +32,14 @@ public class Game extends BowManGameObject{
 	private GameUI gameUI = new GameUI();
 	private ShotAction shot = new ShotAction(arrowController.getModel(), targetController.getModel());
 	
+	private DBHandler dbhandler = new DBHandler();
+	
 	private User user;
 	
 	public Game(User user){
 		this.user = user;
 		gameUI.setPoints(user.getPoints());
+		gameUI.setPointsText();
 		gameUI.setPlayerNameText(user.getUsername());
 		stage.setScene(scene);
 		addToRoot();
@@ -44,7 +47,6 @@ public class Game extends BowManGameObject{
 		stage.show();
 		stage.setOnCloseRequest(e -> Platform.exit());
 	}
-	
 	
 	/**
 	 * Az egér kezelésért felelős függvény
@@ -78,10 +80,12 @@ public class Game extends BowManGameObject{
                     if( shot.action() ){
                     	gameUI.incPoints();
                     	user.addPoint();
+                    	dbhandler.modifyUserPoints(user);
                     }
                     else{
                     	gameUI.decrPoints();
                     	user.losePoint();
+                    	dbhandler.modifyUserPoints(user);
                     }
                 }  
             }
