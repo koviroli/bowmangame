@@ -37,8 +37,7 @@ public class DBTest {
 		
 		assertEquals(false, dbhandler.newRegistry(user));
 	}
-	
-	
+		
 	@Test
 	public void DBTest4LastLogin(){
 		User user = new User("test1", "testpw123", "test1@hotmail.com");	

@@ -161,6 +161,7 @@
 						<excludes>
 							<exclude>*.class</exclude>
 							<exclude>view/*</exclude>
+							<exclude>controller/*</exclude>
 						</excludes>
 					</instrumentation>
 				</configuration>
