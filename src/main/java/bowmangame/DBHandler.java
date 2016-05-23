@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -139,6 +141,10 @@ public class DBHandler {
 		User uUser = checkUserPassword(user, pw);
 		if (uUser != null){
 			logger.info("sikeres bejelentkezes.");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate date = LocalDate.parse(uUser.getRegistrationDate());
+			System.out.println("---parsed date: " + date.toString());
+			
 			logger.info(uUser.getUsername());
 			logger.info(uUser.getPassword());
 			logger.info(uUser.getEmailaddress());

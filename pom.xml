@@ -160,6 +160,7 @@
 						</ignores>
 						<excludes>
 							<exclude>*.class</exclude>
+							<exclude>view/*</exclude>
 						</excludes>
 					</instrumentation>
 				</configuration>

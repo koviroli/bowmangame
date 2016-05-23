@@ -1,7 +1,5 @@
 package model;
 
-import javafx.scene.image.Image;
-
 public class TargetModel extends GameObjectModel{
 	
 	//x1, y1 representing the start coordinates of the target
@@ -13,7 +11,6 @@ public class TargetModel extends GameObjectModel{
 	//constructor
 	public TargetModel() {
 		super();
-		setImage(new Image("pictures/target/target100.png"));
 	}
 
 	public double getX1() {

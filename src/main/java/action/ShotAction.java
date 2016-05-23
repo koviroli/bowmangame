@@ -7,7 +7,6 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
-import model.BowManGameObject;
 import model.GameObjectModel;
 import model.TargetModel;
 
@@ -16,7 +15,7 @@ import model.TargetModel;
  * @author koviroli
  *
  */
-public class ShotAction extends BowManGameObject{
+public class ShotAction extends ShotActionModel{
 	
 	/**
 	 * Az út amit bejár a nyíl a lövés következtében.
@@ -36,31 +35,6 @@ public class ShotAction extends BowManGameObject{
 	 */
 	private Image image;
 	
-	/**
-	 * A lövés szöge.
-	 */
-	private double angle;
-	
-	/**
-	 * A lövés ereje.
-	 */
-	private double power;
-	
-	/**
-	 * A lövés kezdő koordinátái. sx az x, sy az y koordinátája a lövésnek.
-	 */
-	private double sx, sy;
-	
-	/**
-	 * A céltábla kezdő és vég koordinátái.
-	 */
-	private double tx1, ty1, tx2, ty2;
-	
-	/**
-	 * A hit azt jelzi eltaláltuk-e a céltáblát vagy sem.
-	 */
-	private boolean hit = false;
-	
 
 	public ShotAction() {
 	
@@ -73,7 +47,7 @@ public class ShotAction extends BowManGameObject{
 	 */
 	public ShotAction(GameObjectModel model, TargetModel target){
 		image = model.getImage();
-		sx = model.getPosX();
+		this.sx = model.getPosX();
 		sy = model.getPosY();
 		angle = model.getRotation();
 		imw.setTranslateX(model.getPosX());
@@ -120,85 +94,6 @@ public class ShotAction extends BowManGameObject{
 
 	public void setImw(ImageView imw) {
 		this.imw = imw;
-	}
-
-	public double getAngle() {
-		return angle;
-	}
-
-	public void setAngle(double angle) {
-		this.angle = angle;
-	}
-
-	public double getPower() {
-		return power;
-	}
-
-	public void setPower(double power) {
-		this.power = power;
-	}
-
-	public double getSx() {
-		return sx;
-	}
-
-	public void setSx(double sx) {
-		this.sx = sx;
-	}
-
-	public double getSy() {
-		return sy;
-	}
-
-	public void setSy(double sy) {
-		this.sy = sy;
-	}
-	
-	public void setSxy(double sx, double sy){
-		this.sx = sx;
-		this.sy = sy;
-	}
-
-	public double getTx1() {
-		return tx1;
-	}
-	
-	public void setTx1(double tx1) {
-		this.tx1 = tx1;
-	}
-
-	public double getTy1() {
-		return ty1;
-	}
-
-	public void setTy1(double ty1) {
-		this.ty1 = ty1;
-	}
-	
-	public void setTxy1(double tx1, double ty1){
-		this.tx1 = tx1;
-		this.ty1 = ty1;
-	}
-	
-	public double getTx2() {
-		return tx2;
-	}
-	
-	public void setTx2(double tx2) {
-		this.tx2 = tx2;
-	}
-
-	public double getTy2() {
-		return ty2;
-	}
-
-	public void setTy2(double ty2) {
-		this.ty2 = ty2;
-	}
-	
-	public void setTxy2(double tx2, double ty2){
-		this.tx2 = tx2;
-		this.ty2 = ty2;
 	}
 	
     /**
