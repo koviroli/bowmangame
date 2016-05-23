@@ -45,7 +45,6 @@ public class Game extends BowManGameObject{
 		addToRoot();
 		eventHandler();
 		stage.show();
-		stage.setOnCloseRequest(e -> Platform.exit());
 	}
 	
 	/**
@@ -81,6 +80,10 @@ public class Game extends BowManGameObject{
                     	gameUI.incPoints();
                     	user.addPoint();
                     	dbhandler.modifyUserPoints(user);
+                    	if(user.getPoints() > 10){
+                    		user.setLevel(2);
+                    		dbhandler.modifyUserLevel(user);
+                    	}
                     }
                     else{
                     	gameUI.decrPoints();

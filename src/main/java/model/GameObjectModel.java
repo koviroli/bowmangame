@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 package model;
 
 import javafx.scene.image.Image;

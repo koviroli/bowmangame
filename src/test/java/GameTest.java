@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 import model.ArcherModel;
 import model.BowModel;
 
-
-
 public class GameTest {
 	
 	@Test

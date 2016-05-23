@@ -2,8 +2,13 @@ package action;
 
 import model.BowManGameObject;
 
-
+/**
+ * A lövésért felelős osztály Model osztálya.
+ * @author koviroli
+ *
+ */
 public class ShotActionModel extends BowManGameObject {
+	
 	/**
 	 * A lövés szöge.
 	 */
@@ -29,49 +34,82 @@ public class ShotActionModel extends BowManGameObject {
 	 */
 	protected boolean hit = false;
 	
-
+	 // CHECKSTYLE:OFF
 	public ShotActionModel() {
 	
 	}
-	
+
 	public ShotActionModel(double x, double y){
 		sx = x;
 		sy = y;
 	}
+	 // CHECKSTYLE:ON
 	
-
+	/**
+	 * 
+	 * @return A lövés szogét adja vissza.
+	 */
 	public double getAngle() {
 		return angle;
 	}
-
+	
+	/**
+	 * Beállítjuk a lövés szögét.
+	 * @param angle az szög ami a lövés szöge legyen.
+	 */
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
-
+	
+	/**
+	 *
+	 * @return A lövés erejét adja vissza.	
+	 */
 	public double getPower() {
 		return power;
 	}
-
+	
+	/**
+	 * Beállítjuk a lövés erejét.
+	 * @param power	a lövés ereje.
+	 */
 	public void setPower(double power) {
 		this.power = power;
 	}
-
+	
+	/**
+	 *
+	 * @return Visszaadja a lövés kezdeti koordinátáját.
+	 */
 	public double getSx() {
 		return sx;
 	}
 
+	
+	/**
+	 * A lövés kezdeti koordinátája.
+	 * @param sx A lövés kezdeti koordinátájának x tagja.
+	 */
 	public void setSx(double sx) {
 		this.sx = sx;
 	}
-
+	
+	/**
+	 * A kezdő pozíció y koordinátáját adja vissza.
+	 * @return A kezdő pozíció y koordinátáját adja vissza.
+	 */
 	public double getSy() {
 		return sy;
 	}
-
+	
+	/**
+	 * A lövés kezdeti koordinátája.
+	 * @param sy a lövés kezdeti koordinátájának y tagja.
+	 */
 	public void setSy(double sy) {
 		this.sy = sy;
 	}
-	
+	// CHECKSTYLE: OFF
 	public void setSxy(double sx, double sy){
 		this.sx = sx;
 		this.sy = sy;
@@ -118,6 +156,7 @@ public class ShotActionModel extends BowManGameObject {
 		this.tx2 = tx2;
 		this.ty2 = ty2;
 	}
+	// CHECKSTYLE: ON
 	
     /**
      * A lövés ívét szolgátató függvény
@@ -142,7 +181,7 @@ public class ShotActionModel extends BowManGameObject {
    
 	/**
 	 * Inicializáljuk a képet, az ut és az animációt.
-	 * @return
+	 * @return igazat ad vissza ha találtunk, egyébként hamisat.
 	 */
 	public boolean Initalize(){
 

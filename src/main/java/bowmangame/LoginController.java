@@ -1,4 +1,5 @@
 package bowmangame;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,8 +52,7 @@ public class LoginController implements Initializable{
 	}
 	
 	public void login(){
-		logger.info("Logged in as:");
-		logger.info(userName.getText());
+		logger.info("login() - logged in");
 		
 		DBHandler dbhandler = new DBHandler();
 		

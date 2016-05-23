@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 package model;
 
 public class TargetModel extends GameObjectModel{

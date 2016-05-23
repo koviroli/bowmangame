@@ -35,7 +35,9 @@ public class ShotAction extends ShotActionModel{
 	 */
 	private Image image;
 	
-
+	/**
+	 * Egy paraméter nélküli konstruktor, hogy létretudjuk hozni a ShotAction-t.
+	 */
 	public ShotAction() {
 	
 	}
@@ -74,7 +76,7 @@ public class ShotAction extends ShotActionModel{
 	
 	/**
 	 * Visszaadja a pathTransition-t, az az, az animációt amivel a path-t bejárjuk.
-	 * @return
+	 * @return Visszaadja a pathTransition-t, az az, az animációt amivel a path-t bejárjuk.
 	 */
 	public PathTransition getpTransition() {
 		return pTransition;
@@ -88,10 +90,19 @@ public class ShotAction extends ShotActionModel{
 		this.pTransition = pTransition;
 	}
 	
+	/**
+	 * Az ImageView-ot adja vissza
+	 * 
+	 * @return Az ImageView-ot adja vissza;
+	 */
 	public ImageView getImw() {
 		return imw;
 	}
-
+	
+	/**
+	 * Beállítjuk mi legyen az ImageView
+	 * @param imw a használandó ImagView.
+	 */
 	public void setImw(ImageView imw) {
 		this.imw = imw;
 	}
@@ -119,7 +130,7 @@ public class ShotAction extends ShotActionModel{
    
 	/**
 	 * Inicializáljuk a képet, az ut és az animációt.
-	 * @return
+	 * @return igazat ad ha eltaláltuk a célt, egyébként hamisat.
 	 */
 	public boolean Initalize(){
 		imw.setImage(image);

@@ -1,4 +1,6 @@
+// CHECKSTYLE:OFF
 package bowmangame;
+
 import java.time.LocalDate;
 
 public class User {
@@ -11,6 +13,7 @@ public class User {
 	private String registrationDate;
 	private int points;
 	private int level;
+	private String lastLogin;
 
 	public User(String username, String userpassword, String emailaddress) {
 		super();
@@ -92,6 +95,14 @@ public class User {
 
 	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
+	}
+
+	public String getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(String lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 
 	@Override
